@@ -8,7 +8,7 @@ GenomeReference=/Volumes/tempdata1/tonywang/GATK_ref/hg19.fasta
 GenomeInterval=/Volumes/tempdata1/tonywang/GATK_ref/Agilent_S03723314_Covered.bed  # Narrow the GATK search restricted to this interval for faster speed
 knownSites1=/Volumes/tempdata1/tonywang/GATK_ref/dbsnp_137.hg19.vcf
 knownSites2=/Volumes/tempdata1/tonywang/GATK_ref/Mills_and_1000G_gold_standard.indels.hg19.vcf
-tempSpillFolder=/Volumes/tempdata1/tonywang/GATK_tmp      # temporary cach folder for GATK
+tempSpillFolder=/Volumes/tempdata1/tonywang/GATK_tmp      # temporary cache folder for GATK
 
 InputFolder=./Mapping/BAM
 OutputFolder=$InputFolder/BQSR
