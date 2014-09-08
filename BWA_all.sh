@@ -23,6 +23,26 @@ FastqExtension="fastq"
 # First step: align the fastq sequence to reference genome
 
 SaiFileListName="SaiFileList2.txt"    # output list of the BWA
+#fastqFiles.txt contains paired end reads, separated by a single space
+
+while read line; do
+
+        echo $line
+        fastq1=$(echo $line | awk '{print $1}')
+        fastqFileName1=$(basename "$fastq1")
+        fastqFileName1=${fastqFileName1%%.*}    
+
+        fastq2=$(echo $line | awk '{print $2}')
+        fastqFileName2=$(basename "$fastq2")
+        fastqFileName2=${fastqFileName2%%.*}    
+        echo "fastq1 is $fastq1, and fastq2 is $fastq2"
+        echo "fastqFileName1 is $fastqFileName1, and fastqFileName2 is $fastqFileName2" 
+        
+        bwa aln -t 5 $REFERENCEBWA $fastq1 > $OutputFolder/$fastqFileName1.sai&
+        bwa aln -t 5 $REFERENCEBWA $fastq2 > $OutputFolder/$fastqFileName2.sai
+
+
+done<fastqFiles.txt
 
 if [ -f sampleNameList2.txt ]; then
    rm -rf sampleNameList2.txt
