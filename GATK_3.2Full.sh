@@ -22,6 +22,8 @@ mkdir -p $OutputVCFFolder
 
 for file in $InputFolder/*grp.bam; do
 
+      samtools index $file
+
       filename=$(basename "$file")
       extension="${filename##*.}"
       sample="${filename%.*}"
@@ -107,13 +109,15 @@ java -Xmx10g -Djava.io.tmpdir=$tempSpillFolder -jar $CLASSPATH/GenomeAnalysisTK.
 
 done
 
+ls $OutputFolder/*.recal.bam > bamFilesList.list
 
 #joint variant calling for SNPs and Indels
-#java -Xmx10g -Djava.io.tmpdir=$tempSpillFolder -jar $CLASSPATH/GenomeAnalysisTK.jar \
-#-T HaplotypeCaller \
-#-nct 7 \
-#-R $GenomeReference \
-#-I ./bamFilesList.list \
-#--dbsnp $knownSites1 \
-#-L $GenomeInterval \
-#-o $OutputVCFFolder/raw.snps.indels.vcf
+java -Xmx15g -Djava.io.tmpdir=$tempSpillFolder -jar $CLASSPATH/GenomeAnalysisTK.jar \
+-T HaplotypeCaller \
+-nct 7 \
+-R $GenomeReference \
+-I ./bamFilesList.list \
+--dbsnp $knownSites1 \
+-L $GenomeInterval \
+-log $OutputVCFFolder/haplotypecaller.log \
+-o $OutputVCFFolder/raw.snps.indels.vcf
