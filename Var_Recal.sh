@@ -47,20 +47,20 @@ java -Xmx8g -jar $CLASSPATH/GenomeAnalysisTK.jar \
 
 
 
-#java -Xmx8g -jar $CLASSPATH/GenomeAnalysisTK.jar \
-#-T VariantRecalibrator \
-#-R $GenomeReference \
-#-input $InputVCF \
-#-nt 8 \
-#-resource:hapmap,known=false,training=true,truth=true,prior=15.0 $resource3 \
-#-resource:omni,known=false,training=true,truth=true,prior=12.0 $resource4 \
-#-resource:1000G,known=false,training=true,truth=false,prior=10.0 $resource5 \
-#-resource:dbsnp,known=true,training=false,truth=false,prior=2.0 $resource6 \
-#-an DP -an QD -an MQRankSum -an ReadPosRankSum -an FS -an MQ \
-#--maxGaussians 8 \
-#-mode SNP \
-#-tranche 100.0 -tranche 99.9 -tranche 99.0 -tranche 90.0 \
-#-log $SNPsOutput/Snps.log \
-#-recalFile $SNPsOutput/exome.snps.vcf.recal \
-#-tranchesFile $SNPsOutput/exome.snps.tranches \
-#-rscriptFile $SNPsOutput/exome.snps.recal.plots.R
+java -Xmx8g -jar $CLASSPATH/GenomeAnalysisTK.jar \
+-T VariantRecalibrator \
+-R $GenomeReference \
+-input $InputVCF \
+-nt 8 \
+-resource:hapmap,known=false,training=true,truth=true,prior=15.0 $resource3 \
+-resource:omni,known=false,training=true,truth=true,prior=12.0 $resource4 \
+-resource:1000G,known=false,training=true,truth=false,prior=10.0 $resource5 \
+-resource:dbsnp,known=true,training=false,truth=false,prior=2.0 $resource6 \
+-an DP -an QD -an MQRankSum -an ReadPosRankSum -an FS -an MQ \
+--maxGaussians 8 \
+-mode SNP \
+-tranche 100.0 -tranche 99.9 -tranche 99.0 -tranche 90.0 \
+-log $SNPsOutput/Snps.log \
+-recalFile $SNPsOutput/exome.snps.vcf.recal \
+-tranchesFile $SNPsOutput/exome.snps.tranches \
+-rscriptFile $SNPsOutput/exome.snps.recal.plots.R
