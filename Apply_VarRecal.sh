@@ -1,6 +1,9 @@
 #!/bin/bash
 CLASSPATH=/Library/Java/Extensions
 
+GenomeReference=/Volumes/tempdata1/tonywang/GATK_ref/hg19.fasta
+GenomeInterval=/Volumes/tempdata1/tonywang/GATK_ref/Agilent_S03723314_Covered.bed  # Narrow the GATK search restricted to this interval for faster speed
+
 dir=../VCF_files
 InputVCF=$dir/raw.snps.indels.vcf
 SNPsOutput=$dir/SNPs
@@ -10,7 +13,7 @@ IndelsOutput=$dir/Indels
 
 java -Xmx12g -Djava.awt.headless=true -jar $CLASSPATH/GenomeAnalysisTK.jar \
 -T ApplyRecalibration \
--R /Volumes/tempdata1/tonywang/GATK_ref/hg19.fasta \
+-R $GenomeReference \
 -nt 5 \
 --input $InputVCF \
 -mode SNP \
@@ -22,7 +25,7 @@ java -Xmx12g -Djava.awt.headless=true -jar $CLASSPATH/GenomeAnalysisTK.jar \
 
 java -Xmx12g -Djava.awt.headless=true -jar $CLASSPATH/GenomeAnalysisTK.jar \
 -T ApplyRecalibration \
--R /Volumes/tempdata1/tonywang/GATK_ref/hg19.fasta \
+-R $GenomeReference \
 -nt 5 \
 --input $InputVCF \
 -mode INDEL \
