@@ -1,0 +1,3 @@
+../Mapping/BAM/VQSR/Filtered/MB1690.raw.snps.indels.vcf ../Mapping/BAM/VQSR/Filtered/MB2049.raw.snps.indels.vcf
+../Mapping/BAM/VQSR/Filtered/MB2020.raw.snps.indels.vcf ../Mapping/BAM/VQSR/Filtered/MB2009.raw.snps.indels.vcf
+../Mapping/BAM/VQSR/Filtered/MB2176.raw.snps.indels.vcf ../Mapping/BAM/VQSR/Filtered/MB2170.raw.snps.indels.vcf
